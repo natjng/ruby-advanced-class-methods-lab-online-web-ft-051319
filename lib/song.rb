@@ -15,7 +15,7 @@ class Song
 
   def self.create
     song = self.new
-    self.all << song
+    self.all << song # song.save
     song
   end
   
@@ -47,10 +47,16 @@ class Song
     filename_arr = filename.split(".mp3").join.split(" - ")
     artist_name = filename_arr[0]
     name = filename_arr[1]
-    song = self.new
+    
+    song = self.new_by_name(name)
     song.artist_name = artist_name
-    song.name = name
     song
+    
+    # or
+    # song = self.new
+    # song.artist_name = artist_name
+    # song.name = name
+    # song
   end
   
   def self.create_from_filename(filename)
